@@ -9,9 +9,8 @@ st.title("MNIST Handwritten Digit Generator")
 # Load MNIST dataset (only once)
 @st.cache_data
 def load_mnist():
-    mnist = fetch_openml('mnist_784', version=1, as_frame=False)
-    X = mnist['data']
-    y = mnist['target'].astype(int)
+    X, y = fetch_openml('mnist_784', version=1, as_frame=False, return_X_y=True)
+    y = y.astype(int)
     return X, y
 
 X, y = load_mnist()
